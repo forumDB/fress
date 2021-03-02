@@ -11,7 +11,6 @@ body {
 	font-size: 10px;
 	line-height: normal;
 	margin: 0;
-	padding: 12px 0;
 	word-wrap: break-word;
 	-webkit-print-color-adjust: exact;
 }
@@ -163,33 +162,6 @@ a:hover	{ text-decoration: underline; }
 
 .page-footer h3 {
 	margin-top: 20px;
-}
-
-.logo {
-	float: left;
-	width: auto;
-	padding: 10px 13px 0 10px;
-}
-
-.logo:hover {
-	text-decoration: none;
-}
-
-.site_logo {
-	background-repeat: no-repeat;
-	display: inline-block;
-	width: 149px;
-	height: 52px;
-}
-
-/* Site description and logo */
-.site-description {
-	float: left;
-	width: 65%;
-}
-
-.site-description h1 {
-	margin-right: 0;
 }
 
 /* Round cornered boxes and backgrounds

@@ -79,7 +79,7 @@
 	<div class="header mb-4">
 		<div class="container">
 			<div class="row py-4 d-flex flex-wrap align-items-center">
-				<div class="col-md-2 col-sm-12">
+				<div class="col-md-1 col-sm-12">
 					<div class="row">
 						<div class="col-3 col-md-0 d-flex align-items-center d-md-none">
 							<i data-feather="menu"></i>
@@ -94,9 +94,9 @@
 				</div>
 				<!-- EVENT overall_header_searchbox_before -->
 				<!-- IF S_DISPLAY_SEARCH and not S_IN_SEARCH -->
-				<div class="col-0 col-md-3 d-none d-md-block">
-					<div class="input-group">
-						<form action="{U_SEARCH}" method="get" id="search" class="flex-nowrap">
+				<div class="col-0 col-md-4 d-none d-md-block">
+					<div class="input-group d-flex">
+						<form action="{U_SEARCH}" method="get" id="search" class="flex-nowrap flex-fill">
 							<fieldset class="d-flex">
 								<span class="search-bar-icon" id="addon-wrapping"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span>
 								<input name="keywords" id="keywords" type="search" maxlength="128" title="{L_SEARCH_KEYWORDS}" class="form-control search-bar" value="{SEARCH_WORDS}" placeholder="{L_SEARCH_MINI}" />
@@ -106,21 +106,90 @@
 				</div>
 				<!-- ENDIF -->
 				<!-- EVENT overall_header_searchbox_after -->
-				<div class="col-0 col-md-4 d-sm-none d-none d-md-block">
-					<ul class="menu top_links list-group list-group-horizontal">
-						<li class="list-group-item"><a href="http://localhost/portal.php" class="portal">Home</a></li>
-						<li class="list-group-item"><a href="http://localhost/memberlist.php" class="memberlist">Portal</a></li>
-						<li class="list-group-item"><a href="http://localhost/memberlist.php" class="memberlist">Member List</a></li>
+				<div class="col-0 col-md-5 d-sm-none d-none d-md-block">
+					<ul class="list-group list-group-horizontal nav-link-group rightside">
+						<li class="list-group-item"><a href="{% if U_SITE_HOME %}{{ U_SITE_HOME }}{% else %}{{ U_INDEX }}{% endif %}" class="portal">{% if U_SITE_HOME %}{{ L_SITE_HOME }}{% else %}{{ L_INDEX }}{% endif %}</a></li>
+						<li class="list-group-item"><a href="{U_MEMBERLIST}" class="memberlist">{L_MEMBERLIST}</a></li>
+						<li class="list-group-item"><a href="{U_FAQ}" class="memberlist">{L_FAQ}</a></li>
 					</ul>
 				</div>
-				<div class="col-0 col-md-3 d-sm-none d-none d-md-block">
+
+				<div class="col-0 col-md-2 d-sm-none d-none d-md-block">
 					<div class="float-end d-flex">
-						<ul class="menu top_links list-group list-group-horizontal">
-							<li class="list-group-item"><a href="http://localhost/memberlist.php" class="memberlist">Login</a></li>
-						</ul>
-						<div class="button-register d-flex">
-							<a href="http://localhost/memberlist.php">Register</a>
-						</div>
+						<!-- IF S_REGISTERED_USER -->
+							<!-- IF S_DISPLAY_PM -->
+							<ul class="list-unstyled">
+								<li class="rightside" data-skip-responsive="true">
+									<a href="{U_PRIVATEMSGS}" role="menuitem">
+										<i class="icon fa-inbox fa-fw" aria-hidden="true"></i><strong class="badge<!-- IF not PRIVATE_MESSAGE_COUNT --> hidden<!-- ENDIF -->">{PRIVATE_MESSAGE_COUNT}</strong>
+									</a>
+								</li>
+							</ul>
+							<!-- ENDIF -->
+							<!-- IF S_NOTIFICATIONS_DISPLAY -->
+							<ul class="list-unstyled">
+								<li class="dropdown-container dropdown-{S_CONTENT_FLOW_END} rightside" data-skip-responsive="true">
+									<a href="{U_VIEW_ALL_NOTIFICATIONS}" id="notification_list_button" class="dropdown-trigger">
+										<i class="icon fa-bell fa-fw" aria-hidden="true"></i><strong class="badge<!-- IF not NOTIFICATIONS_COUNT --> hidden<!-- ENDIF -->">{NOTIFICATIONS_COUNT}</strong>
+									</a>
+									<!-- INCLUDE notification_dropdown.html -->
+								</li>
+							</ul>
+							<!-- ENDIF -->
+
+
+						<!-- EVENT navbar_header_user_profile_prepend -->
+						<li id="username_logged_in" class="rightside <!-- IF CURRENT_USER_AVATAR --> no-bulletin<!-- ENDIF -->" data-skip-responsive="true">
+							<!-- EVENT navbar_header_username_prepend -->
+							<div class="header-profile dropdown-container">
+								<a href="{U_PROFILE}" class="header-avatar dropdown-trigger"><!-- IF CURRENT_USER_AVATAR -->{CURRENT_USER_AVATAR} <!-- ENDIF --> {CURRENT_USERNAME_SIMPLE}</a>
+								<div class="dropdown">
+									<div class="pointer"><div class="pointer-inner"></div></div>
+									<ul class="dropdown-contents" role="menu">
+										<!-- IF U_RESTORE_PERMISSIONS -->
+										<li>
+											<a href="{U_RESTORE_PERMISSIONS}">
+												<i class="icon fa-refresh fa-fw" aria-hidden="true"></i><span>{L_RESTORE_PERMISSIONS}</span>
+											</a>
+										</li>
+										<!-- ENDIF -->
+
+										<!-- EVENT navbar_header_profile_list_before -->
+
+										<li>
+											<a href="{U_PROFILE}" title="{L_PROFILE}" role="menuitem">
+												<i class="icon fa-sliders fa-fw" aria-hidden="true"></i><span>{L_PROFILE}</span>
+											</a>
+										</li>
+										<!-- IF U_USER_PROFILE -->
+										<li>
+											<a href="{U_USER_PROFILE}" title="{L_READ_PROFILE}" role="menuitem">
+												<i class="icon fa-user fa-fw" aria-hidden="true"></i><span>{L_READ_PROFILE}</span>
+											</a>
+										</li>
+										<!-- ENDIF -->
+
+										<!-- EVENT navbar_header_profile_list_after -->
+
+										<li class="separator"></li>
+										<li>
+											<a href="{U_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}" accesskey="x" role="menuitem">
+												<i class="icon fa-power-off fa-fw" aria-hidden="true"></i><span>{L_LOGIN_LOGOUT}</span>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<!-- EVENT navbar_header_username_append -->
+						<!-- ELSE IF not S_IS_BOT -->
+							<ul class="list-group list-group-horizontal nav-link-group">
+								<li class="list-group-item d-inline-flex align-items-center"><a href="{U_LOGIN_LOGOUT}" class="memberlist">{L_LOGIN_LOGOUT}</a></li>
+							</ul>
+							<!-- IF S_REGISTER_ENABLED and not (S_SHOW_COPPA or S_REGISTRATION) -->
+							<a class="button-register d-flex" href="{U_REGISTER}">{L_REGISTER}</a>
+							<!-- ENDIF -->
+							<!-- EVENT navbar_header_logged_out_content -->
+						<!-- ENDIF -->
 					</div>
 				</div>
 			</div>

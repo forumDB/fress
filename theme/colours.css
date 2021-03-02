@@ -1,3 +1,7 @@
+:root {
+	--bg-color: #F9FCFC;
+	--nav-links: #747474;
+}
 /*
 --------------------------------------------------------------
 Colours and backgrounds for common.css
@@ -5,7 +9,7 @@ Colours and backgrounds for common.css
 
 html, body {
 	color: #536482;
-	background-color: #F5F7FA;
+	background-color: var(--bg-color);
 }
 
 h1 {
