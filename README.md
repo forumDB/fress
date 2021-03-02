@@ -5,8 +5,8 @@
 [![MIT License][license-shield]][license-url]git-->
 
 <!-- PROJECT LOGO -->
-<br />
-<p align="center">≈
+<br>
+<p align="center">
     <img src="https://i.imgur.com/tdfnaUo.png" alt="Banner" width="500px" height="100px">
 <h3 align="center">Fress - a phpBB 3.3.3 style</h3>
 
