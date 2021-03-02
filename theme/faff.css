@@ -95,3 +95,11 @@ a{color: var(--main-color)}
     text-decoration: none;
     filter: brightness(0.96);
 }
+
+/* Misc */
+.caret-off::before {
+    display: none;
+}
+.caret-off::after {
+    display: none;
+}
