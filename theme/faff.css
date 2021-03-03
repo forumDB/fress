@@ -14,7 +14,8 @@ body {
     font-family: 'Josefin Sans', sans-serif;
     margin: 0;
 }
-a{color: var(--main-color)}
+a{color: var(--main-color);}
+.main-color{color: var(--main-color);}
 
 .header {
     background-color: var(--white);
@@ -68,7 +69,7 @@ a{color: var(--main-color)}
 .nav-link-group a {
     color: var(--nav-links);
     text-transform: lowercase;
-    font-size: 2em;
+    font-size: 1.8em;
 }
 
 .nav-link-group a:hover {
@@ -78,14 +79,15 @@ a{color: var(--main-color)}
 
 .nav-link-group li {
     border: 0;
+    padding: 0 1rem;
 }
 
 /* Buttons */
 .button-register {
-    padding: 13px 30px;
+    padding: 10px 20px;
     background-color: var(--main-color);
     color: #FFF;
-    font-size: 2em;
+    font-size: 1.8em;
     text-transform: lowercase;
     border-radius: 5px;
 }

@@ -327,9 +327,11 @@ a.header-avatar:hover {
 
 a.header-avatar img {
 	margin-bottom: 2px;
-	max-height: 20px;
+	height: 50px;
+	width: 50px;
 	vertical-align: middle;
-	width: auto;
+	object-fit: cover;
+	border-radius: 50%;
 }
 
 a.header-avatar span:after {
@@ -362,8 +364,7 @@ a.header-avatar span:after {
 .dropdown {
 	display: none;
 	position: absolute;
-	left: 0;
-	top: 1.2em;
+	left: -0.3em;
 	z-index: 2;
 	border: 1px solid transparent;
 	border-radius: 5px;
@@ -387,7 +388,7 @@ a.header-avatar span:after {
 
 .dropdown-left .dropdown, .nojs .rightside .dropdown {
 	left: auto;
-	right: 0;
+	right: 0.4em;
 	margin-left: -500px;
 	margin-right: 0;
 }
@@ -451,10 +452,11 @@ a.header-avatar span:after {
 	overflow: hidden;
 	overflow-y: auto;
 	border: 1px solid transparent;
-	border-radius: 5px;
+	border-radius: 3px;
 	padding: 5px;
 	position: relative;
 	max-height: 300px;
+	font-size: 0.8em;
 }
 
 .dropdown-contents a {
@@ -1105,7 +1107,7 @@ ul.linklist:after,
 
 .dropdown-extended .header {
 	padding: 0 10px;
-	font-family: Arial, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 1.3em;
 	font-weight: bold;
 	text-align: left;
 	text-shadow: 1px 1px 1px white;

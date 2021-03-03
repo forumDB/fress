@@ -78,23 +78,16 @@
 
 	<div class="header mb-4">
 		<div class="container">
-			<div class="row py-4 d-flex flex-wrap align-items-center">
-				<div class="col-md-1 col-sm-12">
-					<div class="row">
-						<div class="col-3 col-md-0 d-flex align-items-center d-md-none">
-							<i data-feather="menu"></i>
-						</div>
-						<div class="col-6 col-md-12 d-sm-block d-flex logo">
-							<a href="http://localhost/index.php" class="mx-auto d-block d-sm-block mw-100">{SITENAME}</a>
-						</div>
-						<div class="col-3 col-md-0 d-md-none">
-							<img src="images/fress/avatar.png" class="forumlist-avatar img-fluid float-right" style="height: 40px;width: 40px;margin: 0;float: right;">
-						</div>
-					</div>
+			<div class="row py-1 py-md-4 d-flex align-items-center">
+				<div class="col-3 d-md-none">
+					<span class="icon fa-bars d-md-none main-color fs-4 me-2"></span>
 				</div>
-				<!-- EVENT overall_header_searchbox_before -->
-				<!-- IF S_DISPLAY_SEARCH and not S_IN_SEARCH -->
-				<div class="col-0 col-md-4 d-none d-md-block">
+				<div class="col-6 col-md-2 col-lg-2 d-flex logo align-items-center justify-content-center justify-content-md-start">
+					<a href="http://localhost/index.php" class="d-block d-sm-block mw-100">{SITENAME}</a>
+				</div>
+				<div class="col-0 col-md-0 col-lg-3 d-none d-lg-flex">
+					<!-- EVENT overall_header_searchbox_before -->
+					<!-- IF S_DISPLAY_SEARCH and not S_IN_SEARCH -->
 					<div class="input-group d-flex">
 						<form action="{U_SEARCH}" method="get" id="search" class="flex-nowrap flex-fill">
 							<fieldset class="d-flex">
@@ -103,34 +96,35 @@
 							</fieldset>
 						</form>
 					</div>
+					<!-- ENDIF -->
+					<!-- EVENT overall_header_searchbox_after -->
 				</div>
-				<!-- ENDIF -->
-				<!-- EVENT overall_header_searchbox_after -->
-				<div class="col-0 col-md-5 d-sm-none d-none d-md-block">
-					<ul class="list-group list-group-horizontal nav-link-group rightside">
+
+				<div class="col-0 col-md-7 col-lg-5 d-sm-none d-none d-md-flex">
+					<ul class="list-group list-group-horizontal nav-link-group d-flex justify-content-center justify-content-lg-end">
 						<li class="list-group-item"><a href="{% if U_SITE_HOME %}{{ U_SITE_HOME }}{% else %}{{ U_INDEX }}{% endif %}" class="portal">{% if U_SITE_HOME %}{{ L_SITE_HOME }}{% else %}{{ L_INDEX }}{% endif %}</a></li>
 						<li class="list-group-item"><a href="{U_MEMBERLIST}" class="memberlist">{L_MEMBERLIST}</a></li>
 						<li class="list-group-item"><a href="{U_FAQ}" class="memberlist">{L_FAQ}</a></li>
+						<li class="list-group-item d-inline d-lg-none"><a href="search.php">Search</a></li>
 					</ul>
 				</div>
 
-				<div class="col-0 col-md-2 d-sm-none d-none d-md-block">
-					<div class="float-end d-flex">
+				<div class="col-3 d-flex col-md-3 col-lg-2 d-flex p-md-0 float-end">
 						<!-- IF S_REGISTERED_USER -->
 							<!-- IF S_DISPLAY_PM -->
-							<ul class="list-unstyled nav-link-group">
-								<li class="rightside list-group-item" data-skip-responsive="true">
+							<ul class="list-unstyled nav-link-group align-items-center d-none d-md-flex">
+								<li class="list-group-item p-0" data-skip-responsive="true">
 									<a href="{U_PRIVATEMSGS}" role="menuitem">
-										<i class="icon fa-inbox fa-fw" aria-hidden="true"></i><strong class="badge<!-- IF not PRIVATE_MESSAGE_COUNT --> hidden<!-- ENDIF -->">{PRIVATE_MESSAGE_COUNT}</strong>
+										<i class="icon fa-inbox fa-fw fs-3" aria-hidden="true"></i><strong class="badge<!-- IF not PRIVATE_MESSAGE_COUNT --> hidden<!-- ENDIF -->">{PRIVATE_MESSAGE_COUNT}</strong>
 									</a>
 								</li>
 							</ul>
 							<!-- ENDIF -->
 							<!-- IF S_NOTIFICATIONS_DISPLAY -->
-							<ul class="list-unstyled nav-link-group">
-								<li class="dropdown-container dropdown-{S_CONTENT_FLOW_END} rightside list-group-item" data-skip-responsive="true">
+							<ul class="list-unstyled nav-link-group align-items-center d-none d-md-flex">
+								<li class="dropdown-container dropdown-{S_CONTENT_FLOW_END} list-group-item p-0" data-skip-responsive="true">
 									<a href="{U_VIEW_ALL_NOTIFICATIONS}" id="notification_list_button" class="dropdown-trigger caret-off">
-										<i class="icon fa-bell fa-fw" aria-hidden="true"></i><strong class="badge<!-- IF not NOTIFICATIONS_COUNT --> hidden<!-- ENDIF -->">{NOTIFICATIONS_COUNT}</strong>
+										<i class="icon fa-bell fa-fw fs-3" aria-hidden="true"></i><strong class="badge<!-- IF not NOTIFICATIONS_COUNT --> hidden<!-- ENDIF -->">{NOTIFICATIONS_COUNT}</strong>
 									</a>
 									<!-- INCLUDE notification_dropdown.html -->
 								</li>
@@ -139,17 +133,17 @@
 
 
 						<!-- EVENT navbar_header_user_profile_prepend -->
-						<ul class="list-group list-group-horizontal nav-link-group rightside">
-						<li id="username_logged_in" class="rightside <!-- IF CURRENT_USER_AVATAR --> no-bulletin<!-- ENDIF --> list-group-item" data-skip-responsive="true">
+						<ul class="list-group list-group-horizontal nav-link-group">
+						<li id="username_logged_in" class="<!-- IF CURRENT_USER_AVATAR --> no-bulletin<!-- ENDIF --> list-group-item" data-skip-responsive="true">
 							<!-- EVENT navbar_header_username_prepend -->
 							<div class="header-profile dropdown-container">
-								<a href="{U_PROFILE}" class="header-avatar dropdown-trigger caret-off"><!-- IF CURRENT_USER_AVATAR -->{CURRENT_USER_AVATAR} <!-- ENDIF --> {CURRENT_USERNAME_SIMPLE}</a>
+								<a href="{U_PROFILE}" class="header-avatar dropdown-trigger caret-off"><!-- IF CURRENT_USER_AVATAR -->{CURRENT_USER_AVATAR}<!-- ELSE --> <img src="styles/fress/theme/images/noavatar.svg"><!-- ENDIF --> </a>
 								<div class="dropdown">
 									<div class="pointer"><div class="pointer-inner"></div></div>
 									<ul class="dropdown-contents" role="menu">
 										<!-- IF U_RESTORE_PERMISSIONS -->
 										<li>
-											<a href="{U_RESTORE_PERMISSIONS}">
+											<a href="{U_RESTORE_PERMISSIONS}" class="d-flex align-items-center">
 												<i class="icon fa-refresh fa-fw" aria-hidden="true"></i><span>{L_RESTORE_PERMISSIONS}</span>
 											</a>
 										</li>
@@ -158,13 +152,13 @@
 										<!-- EVENT navbar_header_profile_list_before -->
 
 										<li>
-											<a href="{U_PROFILE}" title="{L_PROFILE}" role="menuitem">
+											<a href="{U_PROFILE}" title="{L_PROFILE}" role="menuitem" class="d-flex align-items-center">
 												<i class="icon fa-sliders fa-fw" aria-hidden="true"></i><span>{L_PROFILE}</span>
 											</a>
 										</li>
 										<!-- IF U_USER_PROFILE -->
 										<li>
-											<a href="{U_USER_PROFILE}" title="{L_READ_PROFILE}" role="menuitem">
+											<a href="{U_USER_PROFILE}" title="{L_READ_PROFILE}" role="menuitem" class="d-flex align-items-center">
 												<i class="icon fa-user fa-fw" aria-hidden="true"></i><span>{L_READ_PROFILE}</span>
 											</a>
 										</li>
@@ -172,9 +166,9 @@
 
 										<!-- EVENT navbar_header_profile_list_after -->
 
-										<li class="separator"></li>
+										<li class="separator my-1"></li>
 										<li>
-											<a href="{U_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}" accesskey="x" role="menuitem">
+											<a href="{U_LOGIN_LOGOUT}" title="{L_LOGIN_LOGOUT}" accesskey="x" role="menuitem" class="d-flex align-items-center">
 												<i class="icon fa-power-off fa-fw" aria-hidden="true"></i><span>{L_LOGIN_LOGOUT}</span>
 											</a>
 										</li>
@@ -184,55 +178,32 @@
 						</li>
 							<!-- EVENT navbar_header_username_append -->
 						<!-- ELSE IF not S_IS_BOT -->
-							<ul class="list-group list-group-horizontal nav-link-group">
+							<ul class="list-group list-group-horizontal nav-link-group d-none d-md-flex">
 								<li class="list-group-item d-inline-flex align-items-center"><a href="{U_LOGIN_LOGOUT}" class="memberlist">{L_LOGIN_LOGOUT}</a></li>
 							</ul>
 							<!-- IF S_REGISTER_ENABLED and not (S_SHOW_COPPA or S_REGISTRATION) -->
-							<a class="button-register d-flex" href="{U_REGISTER}">{L_REGISTER}</a>
+							<a class="button-register d-none d-md-flex" href="{U_REGISTER}">{L_REGISTER}</a>
 							<!-- ENDIF -->
 							<!-- EVENT navbar_header_logged_out_content -->
 						<!-- ENDIF -->
-					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<a id="top" class="top-anchor" accesskey="t"></a>
-	<div id="page-header">
-		<div class="headerbar" role="banner">
-		<!-- EVENT overall_header_headerbar_before -->
-			<div class="inner">
 
-			<div id="site-description" class="site-description">
-		<a id="logo" class="logo" href="{% if U_SITE_HOME %}{{ U_SITE_HOME }}{% else %}{{ U_INDEX }}{% endif %}" title="{% if U_SITE_HOME %}{{ L_SITE_HOME }}{% else %}{{ L_INDEX }}{% endif %}">
-					<span class="site_logo"></span>
-				</a>
-				<h1>{SITENAME}</h1>
-				<p>{SITE_DESCRIPTION}</p>
-				<p class="skiplink"><a href="#start_here">{L_SKIP}</a></p>
-			</div>
-
-
-
-			</div>
-			<!-- EVENT overall_header_headerbar_after -->
-		</div>
-		<!-- EVENT overall_header_navbar_before -->
-		<!-- INCLUDE navbar_header.html -->
-	</div>
 
 	<!-- EVENT overall_header_page_body_before -->
 
 	<a id="start_here" class="anchor"></a>
-	<div id="page-body" class="page-body" role="main">
+	<div class="container">
 		<!-- IF S_BOARD_DISABLED and S_USER_LOGGED_IN and (U_MCP or U_ACP) -->
-		<div id="information" class="rules">
+		<div id="information" class="rules row">
 			<div class="inner">
 				<strong>{L_INFORMATION}{L_COLON}</strong> {L_BOARD_DISABLED}
 			</div>
 		</div>
 		<!-- ENDIF -->
 
-		<div class="container">
 		<!-- EVENT overall_header_content_before -->
